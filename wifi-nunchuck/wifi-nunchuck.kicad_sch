@@ -3655,7 +3655,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 83.82) (xy 134.62 81.28)
+			(xy 134.62 81.28) (xy 134.62 78.74)
 		)
 		(stroke
 			(width 0)
@@ -3665,7 +3665,7 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 83.82) (xy 134.62 83.82)
+			(xy 133.35 81.28) (xy 134.62 81.28)
 		)
 		(stroke
 			(width 0)
@@ -4023,6 +4023,18 @@
 		)
 		(uuid "feade4e6-108e-4b10-869e-5439c5136b83")
 	)
+	(rectangle
+		(start 113.03 64.77)
+		(end 144.78 92.71)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid a18a5058-fdcd-45bd-a097-3c577cd21afe)
+	)
 	(text "ESP32\n"
 		(exclude_from_sim no)
 		(at 15.24 52.07 0)
@@ -4033,6 +4045,16 @@
 			(justify left bottom)
 		)
 		(uuid "25c8653e-2f67-46a8-a30e-e811b56b6098")
+	)
+	(text "NUNCHUCK CONNECTOR"
+		(exclude_from_sim no)
+		(at 124.46 66.294 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "27b4aa47-8761-42ea-9ee0-071a1c6f3a1b")
 	)
 	(text "REGULATOR"
 		(exclude_from_sim no)
@@ -4135,7 +4157,7 @@
 	)
 	(global_label "SDA"
 		(shape input)
-		(at 133.35 88.9 0)
+		(at 133.35 86.36 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4145,7 +4167,7 @@
 		)
 		(uuid "0d4751a8-0d6e-471e-900a-560c3e497cd9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 139.9033 88.9 0)
+			(at 139.9033 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4377,7 +4399,7 @@
 	)
 	(global_label "SCL"
 		(shape input)
-		(at 133.35 91.44 0)
+		(at 133.35 88.9 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4387,7 +4409,7 @@
 		)
 		(uuid "d4736fea-8f14-4bbf-bebe-289cce96e253")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 139.8428 91.44 0)
+			(at 139.8428 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4488,7 +4510,7 @@
 	)
 	(symbol
 		(lib_id "Nunchuck:Nunchuck")
-		(at 128.27 82.55 0)
+		(at 128.27 80.01 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4497,7 +4519,7 @@
 		(fields_autoplaced yes)
 		(uuid "0b168254-9594-42bd-8c12-89c34f82d8e9")
 		(property "Reference" "U4"
-			(at 128.27 78.74 0)
+			(at 128.27 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4505,7 +4527,7 @@
 			)
 		)
 		(property "Value" "~"
-			(at 128.27 81.28 0)
+			(at 128.27 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4513,7 +4535,7 @@
 			)
 		)
 		(property "Footprint" "wii:nunchuck"
-			(at 128.27 82.55 0)
+			(at 128.27 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4522,7 +4544,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 128.27 82.55 0)
+			(at 128.27 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4531,7 +4553,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 128.27 82.55 0)
+			(at 128.27 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5721,7 +5743,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 134.62 81.28 0)
+		(at 134.62 78.74 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5729,7 +5751,7 @@
 		(dnp no)
 		(uuid "8ab39e2f-7c56-40c0-b381-05a2278316bb")
 		(property "Reference" "#PWR019"
-			(at 134.62 85.09 0)
+			(at 134.62 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5738,7 +5760,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 134.62 77.216 0)
+			(at 134.62 74.676 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5746,7 +5768,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 134.62 81.28 0)
+			(at 134.62 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5755,7 +5777,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 134.62 81.28 0)
+			(at 134.62 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5764,7 +5786,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 134.62 81.28 0)
+			(at 134.62 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6454,7 +6476,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 133.35 86.36 90)
+		(at 133.35 83.82 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6463,7 +6485,7 @@
 		(fields_autoplaced yes)
 		(uuid "c197a6ec-4d35-451d-9a22-d61c41967de6")
 		(property "Reference" "#PWR018"
-			(at 139.7 86.36 0)
+			(at 139.7 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6472,7 +6494,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 137.16 86.3599 90)
+			(at 137.16 83.8199 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6481,7 +6503,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 133.35 86.36 0)
+			(at 133.35 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6490,7 +6512,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 133.35 86.36 0)
+			(at 133.35 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6499,7 +6521,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 133.35 86.36 0)
+			(at 133.35 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
