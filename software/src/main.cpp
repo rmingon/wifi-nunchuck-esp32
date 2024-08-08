@@ -11,6 +11,8 @@ WiFiUDP udp;
 
 char packetBuffer[2000];
 
+int led = 12;
+
 Accessory nunchuck;
 
 String uniq = "";
@@ -32,6 +34,7 @@ void sendDataToServer(String type, JsonDocument data) {
 
 void setup() {
   Serial.begin(115200);
+  pinMode(led, OUTPUT);
   nunchuck.begin();
 	if (nunchuck.type == Unknown) {
 		nunchuck.type = NUNCHUCK;
@@ -47,7 +50,7 @@ void setup() {
   udp.begin(UDP_PORT);
   JsonDocument data;
   sendDataToServer("controller", data);
-
+  digitalWrite(led, HIGH);
 }
 
 void loop() {
@@ -61,8 +64,8 @@ void loop() {
   motion["AccX"] = nunchuck.values[4];
   motion["AccY"] = nunchuck.values[5];
   motion["AccZ"] = nunchuck.values[6];
-  motion["BoutonZ"] = nunchuck.values[10];
-  motion["BoutonC"] = nunchuck.values[11];
+  motion["BoutonZ"] = nunchuck.values[10] > 20 ? true : false;
+  motion["BoutonC"] = nunchuck.values[11] > 20 ? true : false;
 
   sendDataToServer("motion", motion);
 
@@ -73,7 +76,7 @@ void loop() {
   Serial.print("AccX = ");Serial.println(nunchuck.values[4]);//Acceleration axe X
   Serial.print("AccY = ");Serial.println(nunchuck.values[5]);//Acceleration axe Y
   Serial.print("AccZ = ");Serial.println(nunchuck.values[6]);//Acceleration axe Z
-  Serial.print("BoutonZ = ");Serial.println(nunchuck.values[10]);//Bouton Z
-  Serial.print("BoutonC = ");Serial.println(nunchuck.values[11]);//Bouton C
-  delay(25);
+  Serial.print("BoutonZ = ");Serial.println(nunchuck.values[10] > 20 ? true : false);//Bouton Z
+  Serial.print("BoutonC = ");Serial.println(nunchuck.values[11] > 20 ? true : false);//Bouton C
+  delay(1000);
 }
