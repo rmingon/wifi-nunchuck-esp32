@@ -5,7 +5,6 @@ WiFiUDP udp;
 
 #include <WiiChuck.h>
 
-
 #include "config.h"
 #include <ArduinoJson.h>
 
@@ -14,6 +13,9 @@ char packetBuffer[2000];
 int led = 12;
 
 Accessory nunchuck;
+
+bool buttonC, buttonZ = false;
+int joyX, joyY, rollAngle, pitchAngle, accX, accY, accZ = 0;
 
 String uniq = "";
 void getMac() {
@@ -51,23 +53,69 @@ void setup() {
   JsonDocument data;
   sendDataToServer("controller", data);
   digitalWrite(led, HIGH);
+
+
+  nunchuck.readData();
+  joyX = nunchuck.values[0];
+  joyY = nunchuck.values[1];
+  rollAngle = nunchuck.values[2];
+  pitchAngle = nunchuck.values[3];
+  accX = nunchuck.values[4];
+  accY = nunchuck.values[5];
+  accZ = nunchuck.values[6];
 }
 
 void loop() {
   nunchuck.readData();
   JsonDocument motion;
   
-  motion["JoyX"] = nunchuck.values[0];
-  motion["JoyY"] = nunchuck.values[1];
-  motion["RollAngle"] = nunchuck.values[2];
-  motion["PitchAngle"] = nunchuck.values[3];
-  motion["AccX"] = nunchuck.values[4];
-  motion["AccY"] = nunchuck.values[5];
-  motion["AccZ"] = nunchuck.values[6];
-  motion["BoutonZ"] = nunchuck.values[10] > 20 ? true : false;
-  motion["BoutonC"] = nunchuck.values[11] > 20 ? true : false;
+  if(nunchuck.values[0] != joyX) {
+    motion["joyX"] = nunchuck.values[0] - 127;
+    joyX = nunchuck.values[0];
+  }
+  
+  if(nunchuck.values[1] != joyY) {
+    motion["joyY"] = nunchuck.values[1] - 127;
+    joyY = nunchuck.values[1];
+  }
+  
+  if(nunchuck.values[2] != rollAngle) {
+    motion["rollAngle"] = nunchuck.values[2] - 127;
+    rollAngle = nunchuck.values[2];
+  }
+  
+  if(nunchuck.values[3] != pitchAngle) {
+    motion["pitchAngle"] = nunchuck.values[3] - 127;
+    pitchAngle = nunchuck.values[3];
+  }
 
-  sendDataToServer("motion", motion);
+  if(nunchuck.values[4] != accX) {
+    motion["accX"] = nunchuck.values[4] - 127;
+    accX = nunchuck.values[4];
+  }
+  
+  if(nunchuck.values[5] != accY) {
+    motion["accY"] = nunchuck.values[5] - 127;
+    accY = nunchuck.values[5];
+  }
+  
+  if(nunchuck.values[6] != accZ) {
+    motion["accZ"] = nunchuck.values[6] - 127;
+    accZ = nunchuck.values[6];
+  }
+
+  if (nunchuck.values[10] > 20 != buttonZ) {
+    motion["buttonZ"] = nunchuck.values[10] > 20 ? true : false;
+    buttonZ = nunchuck.values[10] > 20 ? true : false;
+  }
+  if (nunchuck.values[11] > 20 != buttonC) {
+    motion["buttonC"] = nunchuck.values[11] > 20 ? true : false;
+    buttonC = nunchuck.values[11] > 20 ? true : false;
+  }
+
+  if (motion.size() > 0) {
+    sendDataToServer("motion", motion);
+  }
 
   Serial.print("JoyX = ");Serial.println(nunchuck.values[0]);//Joystick axe X
   Serial.print("JoyY = ");Serial.println(nunchuck.values[1]);//Joystick axe Y
@@ -78,5 +126,4 @@ void loop() {
   Serial.print("AccZ = ");Serial.println(nunchuck.values[6]);//Acceleration axe Z
   Serial.print("BoutonZ = ");Serial.println(nunchuck.values[10] > 20 ? true : false);//Bouton Z
   Serial.print("BoutonC = ");Serial.println(nunchuck.values[11] > 20 ? true : false);//Bouton C
-  delay(1000);
 }
