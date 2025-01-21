@@ -1,5 +1,9 @@
 # Esp32 nunchuck
 
+# video
+
+[![Watch the video](https://img.youtube.com/vi/Svnkp6KxDMc/maxresdefault.jpg)](https://youtu.be/Svnkp6KxDMc)
+
 ### Project for use a wii nunchuck on wifi or bluetooth
 
 ### 3d view
